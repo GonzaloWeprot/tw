@@ -1,0 +1,23 @@
+//El primer elemento será el @usuario y el resto serán los #hashtags
+
+//Se creará un array que combinará el @usuario con cada uno de los #hashtags
+//obteniendo un string de la forma: "@usuario #hashtag1,@usuario #hashtag2"
+
+//Primero leemos el cuerpo del correo y guardamos los elementos separados por "***"
+ht = msg.payload.split("***");
+
+//Borramos lo anterior al primer elemento y lo posterior al último
+ht.splice(0,1);
+ht.pop();
+
+//Concatenamos el @usuario con cada hashtag
+//ht[0] será el @usuario y los demás ht[i] los #hashtags
+var i;
+msg.payload = '';
+for (i=1;i<ht.length;i++){
+	msg.payload = msg.payload + "@" + ht[0] + " #" + ht[i] + ",";
+}
+
+//Borramos la última coma ','
+msg.payload = msg.payload.slice(0,msg.payload.length-1);
+return msg; 
