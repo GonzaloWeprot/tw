@@ -21,3 +21,34 @@ for (i=1;i<ht.length;i++){
 //Borramos la última coma ','
 msg.payload = msg.payload.slice(0,msg.payload.length-1);
 return msg; 
+
+INIT COUNT 
+//Iniciamos la cuenta en 0 al cargar el programa
+global.set('count',0);
+return msg;
+
+RESET COUNT
+//Reseteamos la cuenta a 0
+global.set('count',0);
+return msg;
+
+BLOCK SYSTEM
+//Reseteamos la cuenta a 0
+global.set('count',0);
+//Configuramos el email de aviso
+msg.topic = "Expendedora de chicles bloqueada";
+msg.payload = "Se han detectado 10 tweets consecutivos y se ha bloqueado la expendedora de chicles. Chequea los hashtags atacados y cámbialos.";
+return msg;
+
+
+
+RESET
+//Actualizamos la cuenta de eventos
+var count = global.get('count');
+count += 1;
+global.set('count',count);
+msg.count = count;
+
+//Reseteamos el nodo de trigger
+msg.reset = true;
+return msg;
