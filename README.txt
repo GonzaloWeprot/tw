@@ -39,3 +39,5 @@ Hay que enviar un email a info@flagbased.com con el asunto:
 ***mailGigas***
 
 El sistema guardará en correos.txt los nuevos destinatarios y, también, en global.correos
+El formato del correo será algo como: ***gonzalo.hernandez@flagbased.com;carlos.royo@flagbased.com***
+
